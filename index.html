@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Audio</title>
+    <link rel="stylesheet" href="index.css" />
+    <title>For Baciu</title>
   </head>
   <body>
     <script>
-      function play() {
+      function playAndShow() {
         var audio = document.getElementById("audio");
+        var button = document.getElementById("playbtn");
+        var wrapper = document.getElementById("wrapper");
         audio.play();
+        button.style.visibility = "hidden";
+        wrapper.style.backgroundImage = "url(dansbalans.gif)";
       }
+      function paintImage(e) {
+        document.querySelector(
+          "#wrapper"
+        ).innerHTML += `<img src="trandafiri.gif" style="left:${e.offsetX}px;top:${e.offsetY}px">`;
+      }
+      document.addEventListener("click", paintImage);
     </script>
-
-    <input type="button" value="PLAY" onclick="play()" />
+    <div id="wrapper">
+      <input id="playbtn" type="button" value="PLAY" onclick="playAndShow()" />
+    </div>
     <audio id="audio" src="lamutiani.mp3"></audio>
   </body>
 </html>
